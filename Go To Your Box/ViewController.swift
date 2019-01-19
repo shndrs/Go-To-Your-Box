@@ -23,18 +23,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
-        // Create a session configuration
         let configuration = ARWorldTrackingConfiguration()
-
-        // Run the view's session
         sceneView.session.run(configuration)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        // Pause the view's session
         sceneView.session.pause()
     }
     
@@ -86,7 +81,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let lightNode = SCNNode()
         lightNode.light = light
-        lightNode.position = SCNVector3(0, height/2, 0)
+        lightNode.position = SCNVector3(0, 0.4, 0) // (height/2) - width
         lightNode.constraints = [constraint]
         node.addChildNode(lightNode)
         
@@ -101,18 +96,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         self.sceneView.scene.rootNode.addChildNode(node)
         
     }
-    
-
-    // MARK: - ARSCNViewDelegate
-    
-/*
-    // Override to create and configure nodes for anchors added to the view's session.
-    func renderer(_ renderer: SCNSceneRenderer, nodeFor anchor: ARAnchor) -> SCNNode? {
-        let node = SCNNode()
-     
-        return node
-    }
-*/
     
     func session(_ session: ARSession, didFailWithError error: Error) {
         // Present an error message to the user
