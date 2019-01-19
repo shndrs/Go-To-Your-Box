@@ -9,7 +9,7 @@
 import UIKit
 import SceneKit
 import ARKit
-
+//133125
 class ViewController: UIViewController, ARSCNViewDelegate {
 
     @IBOutlet var sceneView: ARSCNView!
@@ -65,7 +65,6 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         rightDoorSide.position = SCNVector3((length / 2) - (doorLength/2), 0, doorLength/2)
         rightDoorSide.eulerAngles = SCNVector3(0, -90.0.degreesToRadian, 0)
         
-        
         let light = SCNLight()
         light.type = .spot
         light.spotInnerAngle = 70
@@ -81,7 +80,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         
         let lightNode = SCNNode()
         lightNode.light = light
-        lightNode.position = SCNVector3(0, 0.4, 0) // (height/2) - width
+        lightNode.position = SCNVector3(0, (height/2) - width, 0) // (height/2) - width // 0.4
         lightNode.constraints = [constraint]
         node.addChildNode(lightNode)
         
