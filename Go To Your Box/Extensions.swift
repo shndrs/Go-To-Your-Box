@@ -10,7 +10,7 @@ import Foundation
 import SceneKit
 import ARKit
 
-var width:CGFloat = 0.2
+var width:CGFloat = 0.02
 var height:CGFloat = 1
 var length:CGFloat = 1
 
@@ -38,4 +38,14 @@ func createBox(isDoor:Bool) -> SCNNode {
     maskedBoxNode.position = SCNVector3(width, 0, 0)
     
     return node
+}
+
+extension FloatingPoint {
+    var degreesToRadian: Self {
+        return self * .pi / 180
+    }
+    
+    var radiansToDegrees:Self {
+        return self * 180 / .pi
+    }
 }
