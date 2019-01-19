@@ -70,6 +70,26 @@ class ViewController: UIViewController, ARSCNViewDelegate {
         rightDoorSide.position = SCNVector3(doorLength/2, 0, doorLength/2)
         rightDoorSide.eulerAngles = SCNVector3(0, -90.0.degreesToRadian, 0)
         
+        
+        let light = SCNLight()
+        light.type = .spot
+        light.spotInnerAngle = 70
+        light.spotOuterAngle = 120
+        light.zNear = 0.00001
+        light.zFar = 5
+        light.castsShadow = true
+        light.shadowRadius = 200
+        light.shadowColor = UIColor.black.withAlphaComponent(0.3)
+        light.shadowMode = .deferred
+        let constraint = SCNLookAtConstraint(target: bottomWall)
+        constraint.isGimbalLockEnabled = true
+        
+        let lightNode = SCNNode()
+        lightNode.light = light
+        lightNode.position = SCNVector3(0, height/2, 0)
+        lightNode.constraints = [constraint]
+        node.addChildNode(lightNode)
+        
         node.addChildNode(leftWall)
         node.addChildNode(rightWall)
         node.addChildNode(topWall)
